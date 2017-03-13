@@ -9,4 +9,4 @@ curl https://raw.githubusercontent.com/github/gitignore/master/Global/Vim.gitign
 echo '# -=Eclipse=-' >> $gitFileName
 curl https://raw.githubusercontent.com/github/gitignore/master/Global/Eclipse.gitignore >>$gitFileName
 
-echo 'git config --global core.excludesfile $gitFileName'
+echo git config --global core.excludesfile $gitFileName
