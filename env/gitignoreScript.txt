@@ -1,0 +1,12 @@
+gitFileName=~/.gitignore_global
+
+:>$gitFileName
+
+echo #Ignoring files for git >> $gitFileName
+
+echo '# -=Vim=-' >> $gitFileName
+curl https://raw.githubusercontent.com/github/gitignore/master/Global/Vim.gitignore >> $gitFileName
+echo '# -=Eclipse=-' >> $gitFileName
+curl https://raw.githubusercontent.com/github/gitignore/master/Global/Eclipse.gitignore >>$gitFileName
+
+echo 'git config --global core.excludesfile $gitFileName'
