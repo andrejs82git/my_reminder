@@ -11,6 +11,6 @@ echo '# -=Eclipse=-' >> $gitFileName
 curl https://raw.githubusercontent.com/github/gitignore/master/Global/Eclipse.gitignore >>$gitFileName
 
 echo '# -=JavaFiles=-' >> $gitFileName
-curl https://github.com/github/gitignore/blob/master/Java.gitignore >> $gitFileName
+curl https://raw.githubusercontent.com/github/gitignore/master/Java.gitignore >> $gitFileName
 
 echo git config --global core.excludesfile $gitFileName
