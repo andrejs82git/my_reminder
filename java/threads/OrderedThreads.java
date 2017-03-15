@@ -6,8 +6,9 @@
 public class OrderedThreads{
 	
 	public static void main(String arg[]) {
+		Object lockObj = new Object();
 		for (int q =0 ; q < 10 ; q++) {
-			Runnable runn = new MyRunnable(q);
+			Runnable runn = new MyRunnable(q, lockObj);
 			new Thread(runn).start();
 		}
 	}
@@ -20,10 +21,11 @@ class MyRunnable implements Runnable {
 
 	private static int current;
 
-	private static Object lockObj = new Object();
+	private final Object lockObj; 
 
-	MyRunnable (final int id) {
+	MyRunnable (final int id, final Object lockObj) {
 		this.id = id;
+		this.lockObj = lockObj;
 	}
 	
 	public void run() {
