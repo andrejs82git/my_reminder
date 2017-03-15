@@ -6,7 +6,7 @@
 public class OrderedThreads{
 	
 	public static void main(String arg[]) {
-		Object lockObj = new Object();
+		ContextThreadOrder lockObj = new ContextThreadOrder(); 
 		for (int q =0 ; q < 10 ; q++) {
 			Runnable runn = new MyRunnable(q, lockObj);
 			new Thread(runn).start();
@@ -15,15 +15,25 @@ public class OrderedThreads{
 	
 }
 
+class ContextThreadOrder{
+	private int current;
+
+	int get(){
+		return current;
+	}
+
+	void increment(){
+		current++;
+	}
+}
+
 class MyRunnable implements Runnable {
 
 	private final int id;
 
-	private static int current;
+	private final ContextThreadOrder lockObj; 
 
-	private final Object lockObj; 
-
-	MyRunnable (final int id, final Object lockObj) {
+	MyRunnable (final int id, final ContextThreadOrder lockObj) {
 		this.id = id;
 		this.lockObj = lockObj;
 	}
@@ -32,7 +42,7 @@ class MyRunnable implements Runnable {
 
 		synchronized(lockObj){
 			while(true){
-				if(id > current){
+				if(id > lockObj.get()){
 					try{
 						lockObj.wait();
  					} catch(Exception e){
@@ -42,11 +52,9 @@ class MyRunnable implements Runnable {
 					break;
 				}
 			}	
-		
 			System.out.println("Runnable" + id );
-			current++;
+			lockObj.increment();
 			lockObj.notifyAll();
-
 		}
 
 	}
