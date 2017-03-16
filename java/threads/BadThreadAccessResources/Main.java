@@ -8,7 +8,7 @@ public class Main{
 	static volatile int countOfAccess = 0;
 
 	public static void main(String arg[]){
-		for(int q = 0; q < ACCESS_COUNT ; q++) {
+		for(int q = 0; q <= ACCESS_COUNT ; q++) {
 			new Thread(new MyRunnable(q)).start();
 		}
 		System.out.format("Should be count %d is %d", ACCESS_COUNT, countOfAccess);
