@@ -13,4 +13,8 @@ curl https://raw.githubusercontent.com/github/gitignore/master/Global/Eclipse.gi
 echo '# -=JavaFiles=-' >> $gitFileName
 curl https://raw.githubusercontent.com/github/gitignore/master/Java.gitignore >> $gitFileName
 
+ehco '# -=Haskell=-' >> $gitFileName
+curl https://raw.githubusercontent.com/github/gitignore/master/Haskell.gitignore >> $gitFileName
+
 echo git config --global core.excludesfile $gitFileName
+
