@@ -16,5 +16,8 @@ curl https://raw.githubusercontent.com/github/gitignore/master/Java.gitignore >>
 ehco '# -=Haskell=-' >> $gitFileName
 curl https://raw.githubusercontent.com/github/gitignore/master/Haskell.gitignore >> $gitFileName
 
-echo git config --global core.excludesfile $gitFileName
+ehco '# -=nodejs=-' >> $gitFileName
+curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore >> $gitFileName
 
+
+echo git config --global core.excludesfile $gitFileName
