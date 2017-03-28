@@ -1,4 +1,9 @@
-For use this script you can do that 
+For use git_ignore_script you can do that 
 ```
 curl https://raw.githubusercontent.com/andrejs82git/my_reminder/master/env/gitignoreScript.txt | sh
+```
+=========================
+To get nodejs on raspbian use that script:
+```
+curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 ```
