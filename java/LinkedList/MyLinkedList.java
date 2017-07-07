@@ -1,20 +1,16 @@
 
 public class MyLinkedList<T> {
 	private Item<T> first;
+	private Item<T> last;
 
 	public MyLinkedList(){
 
 	}
 
 	public void add(T item){
-		Item last = null;
 		if(first == null) {
 			first = last = new Item<T>();
 		}else{
-			last = first;
-			while(last.next != null) {
-				last = last.next;
-			}
 			last = last.next = new Item<T>();
 		}	
 		last.value = item;

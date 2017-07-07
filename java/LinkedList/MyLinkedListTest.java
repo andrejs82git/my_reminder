@@ -26,6 +26,18 @@ public class MyLinkedListTest{
 	}
 
 	@Test
+	public void simpleGetWithALotOfItemsTest() {
+		MyLinkedList list = new MyLinkedList<Integer>();
+		for(int q = 0; q <= 100000; q++){
+			list.add(q);
+		}
+
+		assertThat(list.get(0), is(0));
+		assertThat(list.get(10), is(10));
+		assertThat(list.get(100000), is(100000));
+	}
+
+	@Test
 	public void assertException() {
 		MyLinkedList list = new MyLinkedList<Integer>();
 		list.add(1);
