@@ -52,6 +52,29 @@ public class MyLinkedListTest{
 			list.get(-1);
 			fail("method must throw exception!");
 		}catch(IndexOutOfBoundsException e) {}
+
+		try{
+			list.set(-1, 5);
+			fail("method must throw exception!");
+		}catch(IndexOutOfBoundsException e) {}
+
+		try{
+			list.set(5, 5);
+			fail("method must throw exception!");
+		}catch(IndexOutOfBoundsException e) {}
 	}
 
+	@Test
+	public void setTest() {
+		MyLinkedList list = new MyLinkedList<Integer>();
+		for(int q = 0; q <= 10; q++){
+			list.add(q);
+		}
+
+		assertThat(list.get(0), is(0));
+		assertThat(list.get(10), is(10));
+		list.set(5, 11);
+		assertThat(list.get(5), is(11));
+	}
+	
 }

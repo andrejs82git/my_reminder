@@ -42,6 +42,21 @@ public class MyLinkedList<T> {
 		return item.value;
 	}
 	
+	public void set(int index, T value) {
+		if(index<0){
+			throw new IndexOutOfBoundsException("Index " + index + " is out of bound!");
+		}
+		int i = 0;
+		Item<T> item = first;
+		while(i < index && item != null) {
+			i++;
+			item = item.next;
+		}
+		if(item == null) {
+			throw new IndexOutOfBoundsException("Index " + index + " is out of bound!");
+		}
+		item.value = value;
+	}
 
 	private static class Item<T>{
 		private Item next;
