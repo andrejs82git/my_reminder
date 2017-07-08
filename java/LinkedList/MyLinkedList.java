@@ -28,7 +28,7 @@ public class MyLinkedList<T> {
 
 	public T get(int index){
 		if(index<0){
-			throw new IndexOutOfBoundsException("Index " + index + " is out of bound!");
+			throwOut(index);
 		}
 		int i = 0;
 		Item<T> item = first;
@@ -37,14 +37,14 @@ public class MyLinkedList<T> {
 			item = item.next;
 		}
 		if(item == null) {
-			throw new IndexOutOfBoundsException("Index " + index + " is out of bound!");
+			throwOut(index);
 		}
 		return item.value;
 	}
 	
 	public void set(int index, T value) {
 		if(index<0){
-			throw new IndexOutOfBoundsException("Index " + index + " is out of bound!");
+			throwOut(index);
 		}
 		int i = 0;
 		Item<T> item = first;
@@ -53,9 +53,13 @@ public class MyLinkedList<T> {
 			item = item.next;
 		}
 		if(item == null) {
-			throw new IndexOutOfBoundsException("Index " + index + " is out of bound!");
+			throwOut(index);
 		}
 		item.value = value;
+	}
+
+	private static void throwOut(int index){
+			throw new IndexOutOfBoundsException("Index " + index + " is out of bound!");
 	}
 
 	private static class Item<T>{
