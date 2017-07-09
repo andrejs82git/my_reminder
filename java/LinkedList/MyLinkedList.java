@@ -3,6 +3,8 @@ public class MyLinkedList<T> {
 	private Item<T> first;
 	private Item<T> last;
 
+	private int size = 0;
+
 	public MyLinkedList(){
 
 	}
@@ -17,15 +19,10 @@ public class MyLinkedList<T> {
 			last = last.next = newItem;
 			newItem.prev = newItem;
 		}	
+		size++;
 	}
 
 	public int size(){
-		int size = 0;
-		Item item = first;
-		while(item != null) {
-			item = item.next;
-			size++;
-		}
 		return size;
 	}
 
