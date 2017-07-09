@@ -7,13 +7,16 @@ public class MyLinkedList<T> {
 
 	}
 
-	public void add(T item){
+	public void add(T object){
+		Item<T> newItem = new Item<T>();
+		newItem.value = object;
+
 		if(first == null) {
-			first = last = new Item<T>();
+			 first = last = newItem;
 		}else{
-			last = last.next = new Item<T>();
+			last = last.next = newItem;
+			newItem.prev = newItem;
 		}	
-		last.value = item;
 	}
 
 	public int size(){
@@ -63,6 +66,7 @@ public class MyLinkedList<T> {
 	}
 
 	private static class Item<T>{
+		private Item prev;
 		private Item next;
 		private T value;
 	}
