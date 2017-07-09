@@ -83,13 +83,13 @@ public class MyLinkedListTest{
 			list.add(""+q);
 		}
 
-		assertThat(list.get(0), is(""+0));
-		assertThat(list.get(10), is(""+10));
+		assertThat(list.get(0), is("0"));
+		assertThat(list.get(10), is("10"));
 		assertThat(list.remove("not in collection"), is(false));
 		assertThat(list.size(), is(11));
-		assertThat(list.remove(""+5), is(true));
+		assertThat(list.remove("5"), is(true));
 		assertThat(list.size(), is(10));
-		assertThat(list.get(5), is(""+6));
+		assertThat(list.get(5), is("6"));
 	}
 	
 }
