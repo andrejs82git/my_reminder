@@ -9,7 +9,11 @@ public class MyLinkedList<T> {
 
 	}
 
-	public void add(T object){
+	public int size(){
+		return size;
+	}
+
+	public boolean add(T object){
 		Item<T> newItem = new Item<T>();
 		newItem.value = object;
 
@@ -20,10 +24,7 @@ public class MyLinkedList<T> {
 			newItem.prev = newItem;
 		}	
 		size++;
-	}
-
-	public int size(){
-		return size;
+		return true;
 	}
 
 	public T get(int index){
