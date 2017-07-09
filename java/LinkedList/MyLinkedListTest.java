@@ -80,16 +80,16 @@ public class MyLinkedListTest{
 	public void removeByObjectTest() {
 		MyLinkedList list = new MyLinkedList<Integer>();
 		for(int q = 0; q <= 10; q++){
-			list.add(Integer.valueOf(q));
+			list.add(""+q);
 		}
 
-		assertThat(list.get(0), is(0));
-		assertThat(list.get(10), is(10));
-		assertThat(list.remove(-1), is(false));
+		assertThat(list.get(0), is(""+0));
+		assertThat(list.get(10), is(""+10));
+		assertThat(list.remove("not in collection"), is(false));
 		assertThat(list.size(), is(11));
-		assertThat(list.remove(Integer.valueOf(5)), is(true));
+		assertThat(list.remove(""+5), is(true));
 		assertThat(list.size(), is(10));
-		assertThat(list.get(5), is(6));
+		assertThat(list.get(5), is(""+6));
 	}
 	
 }
