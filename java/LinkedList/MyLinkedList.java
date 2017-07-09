@@ -20,8 +20,8 @@ public class MyLinkedList<T> {
 		if(first == null) {
 			 first = last = newItem;
 		}else{
+			newItem.prev = last;
 			last = last.next = newItem;
-			newItem.prev = newItem;
 		}	
 		size++;
 		return true;
@@ -33,7 +33,7 @@ public class MyLinkedList<T> {
 		}
 		int i = 0;
 		Item<T> item = first;
-		while(i < index && item != null) {
+		while(item != null && i < index) {
 			i++;
 			item = item.next;
 		}
@@ -49,7 +49,7 @@ public class MyLinkedList<T> {
 		}
 		int i = 0;
 		Item<T> item = first;
-		while(i < index && item != null) {
+		while(item != null && i < index ) {
 			i++;
 			item = item.next;
 		}
@@ -57,6 +57,24 @@ public class MyLinkedList<T> {
 			throwOut(index);
 		}
 		item.value = value;
+	}
+
+	public boolean remove(Object o){
+		Item<T> item = first;
+		while(item != null && !o.equals(item.value)) {
+			item = item.next;
+		}
+		if(item == null) {
+			return false;
+		}
+
+		Item prev = item.prev;
+		Item next = item.next;
+		prev.next = next;
+		next.prev = prev;
+
+		size--;
+		return true;
 	}
 
 	private static void throwOut(int index){

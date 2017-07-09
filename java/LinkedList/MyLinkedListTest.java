@@ -14,7 +14,6 @@ public class MyLinkedListTest{
 
 		assertThat(list.size(), is(2));
 	}
-
 	@Test
 	public void simpleGetTest() {
 		MyLinkedList list = new MyLinkedList<Integer>();
@@ -75,6 +74,22 @@ public class MyLinkedListTest{
 		assertThat(list.get(10), is(10));
 		list.set(5, 11);
 		assertThat(list.get(5), is(11));
+	}
+	
+	@Test
+	public void removeByObjectTest() {
+		MyLinkedList list = new MyLinkedList<Integer>();
+		for(int q = 0; q <= 10; q++){
+			list.add(Integer.valueOf(q));
+		}
+
+		assertThat(list.get(0), is(0));
+		assertThat(list.get(10), is(10));
+		assertThat(list.remove(-1), is(false));
+		assertThat(list.size(), is(11));
+		assertThat(list.remove(Integer.valueOf(5)), is(true));
+		assertThat(list.size(), is(10));
+		assertThat(list.get(5), is(6));
 	}
 	
 }
