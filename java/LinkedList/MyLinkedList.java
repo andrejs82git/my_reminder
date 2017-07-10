@@ -68,13 +68,44 @@ public class MyLinkedList<T> {
 			return false;
 		}
 
-		Item prev = item.prev;
-		Item next = item.next;
-		prev.next = next;
-		next.prev = prev;
-
+		spliceOne(item);
 		size--;
 		return true;
+	}
+
+	public T remove(int index){
+		if(index<0){
+			throwOut(index);
+		}
+		int i = 0;
+		Item<T> item = first;
+		while(item != null && i < index ) {
+			i++;
+			item = item.next;
+		}
+		if(item == null) {
+			throwOut(index);
+		}
+		spliceOne(item);	
+		size--;
+		return item.value;
+	}
+
+	private void spliceOne(Item item){
+		Item prev = item.prev;
+		Item next = item.next;
+		if(prev!=null){
+			prev.next = next;
+		} else {
+			first = next;
+		}
+		if(next!=null){
+			next.prev = prev;
+		} else {
+			last = prev;
+		}
+		first.prev = null;
+		last.next = null;
 	}
 
 	private static void throwOut(int index){

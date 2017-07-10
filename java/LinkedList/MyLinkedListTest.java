@@ -61,6 +61,17 @@ public class MyLinkedListTest{
 			list.set(5, 5);
 			fail("method must throw exception!");
 		}catch(IndexOutOfBoundsException e) {}
+
+		try{
+			list.remove(Integer.valueOf(5));
+		}catch(IndexOutOfBoundsException e) {
+			fail("method must throw exception!");
+		}
+
+		try{
+			list.remove(5);
+			fail("method must throw exception!");
+		}catch(IndexOutOfBoundsException e) {}
 	}
 
 	@Test
@@ -90,6 +101,29 @@ public class MyLinkedListTest{
 		assertThat(list.remove("5"), is(true));
 		assertThat(list.size(), is(10));
 		assertThat(list.get(5), is("6"));
+
+		assertThat(list.remove("0"), is(true));
+		assertThat(list.size(), is(9));
+		assertThat(list.remove("10"), is(true));
+		assertThat(list.size(), is(8));
 	}
 	
+	@Test
+	public void removeByIndexTest(){
+		MyLinkedList list = new MyLinkedList<Integer>();
+		for(int q = 0; q <= 10; q++){
+			list.add(""+q);
+		}
+
+		assertThat(list.size(),is(11));
+		assertThat(list.remove(5), is("5"));
+		assertThat(list.size(),is(10));
+
+		assertThat(list.remove(0), is("0"));
+		assertThat(list.size(),is(9));
+
+		assertThat(list.remove(list.size()-1), is("10"));
+		assertThat(list.size(),is(8));
+	}
+
 }
