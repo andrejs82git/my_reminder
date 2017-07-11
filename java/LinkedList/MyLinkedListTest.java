@@ -126,4 +126,21 @@ public class MyLinkedListTest{
 		assertThat(list.size(),is(8));
 	}
 
+	@Test
+	public void indexOfTest(){
+		MyLinkedList list = new MyLinkedList<Integer>();
+		for(int q = 0; q <= 10; q++){
+			list.add(""+q);
+		}
+
+		assertThat(list.indexOf("not in collection") ,is(-1));
+
+		assertThat(list.indexOf("0") ,is(0));
+		assertThat(list.indexOf("5") ,is(5));
+		assertThat(list.indexOf("10") ,is(10));
+
+		assertThat(list.indexOf("10") ,is(10));
+
+	}
+
 }

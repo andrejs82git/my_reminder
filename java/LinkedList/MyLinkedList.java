@@ -91,6 +91,20 @@ public class MyLinkedList<T> {
 		return item.value;
 	}
 
+	public int indexOf(Object o){
+		Item<T> item = first;
+		int index = 0;
+		while(item != null && !o.equals(item.value)) {
+			item = item.next;
+			index++;
+		}
+		if(item == null) {
+			return -1;
+		}
+
+		return index;
+	}
+
 	private void spliceOne(Item item){
 		Item prev = item.prev;
 		Item next = item.next;
