@@ -26,7 +26,7 @@ $("[id_books]").each( function(i){
 $("body").prepend($("<div id='mainDiv' style='font-size:20px;position:fixed;right:0px;top:0px; width:1000px;height:100%; background-color:white;z-index:2147483647;padding:10px;'></div>"));
 $('#mainDiv').append("<input id='search_input' style='margin:10px;' value='978-5-462-01195-5'/> ");
 $('#mainDiv').append("<table border=1 style='width:100%'>"+
-   "<thead><tr><td>#</td><td>имя</td><td>сейчас</td><td>при заказе</td><td>закупка(*1.7)</td></tr></thead>"+
+   "<thead><tr><td>#</td><td>имя</td><td>сейчас</td><td>при заказе</td><td>закупка(*" + upPriceRatio + ")</td></tr></thead>"+
    "<tbody id='result'>  </tbody></table>");
 
 $('#search_input').on('keyup', function (e) {
