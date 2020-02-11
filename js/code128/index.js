@@ -21,14 +21,14 @@ function generateCode128B(numberToEncode, idCanvas)
 
   const createBlock = (symbolCodeNumber,  modaPos) => {
     const startPos = modaPos*11;
-    const symbolEncodeBinary = codePage128[symbolCodeNumber];
+    const symbolEncodeBinary = codePage128[+symbolCodeNumber];
     [...symbolEncodeBinary].forEach( (lineColor, index)=> {
       canvas.appendChild(createRect(lineColor, startPos + index));
     });
   };
   createBarcode = (number) => {
     const numberPairs = [...number].reduce((acc, num, index) => {
-      if (!(index&1)) {
+      if (index%2===0) {
         return [...acc,""+num]
       } else {
         acc[acc.length-1] = acc[acc.length-1] + num;
@@ -39,12 +39,12 @@ function generateCode128B(numberToEncode, idCanvas)
       (numPair.length===2) ? [...acc, numPair] : [...acc, 101 ,16+(+numPair)]
     ,[]);
     const barcodeFullValus = [105,...barcodeBodyValues, checkSumCalc(105, barcodeBodyValues), 108]
-    //console.log(barcodeFullValus);
+    console.log(barcodeFullValus);
     barcodeFullValus.forEach((value, index) => createBlock(value, index));
   };
   const checkSumCalc = (startValue, barcodeValuesBody) => {
     const checkSum = barcodeValuesBody.reduce( (acc, value, index) => acc + (value * (index+1) ), startValue) % 103;
     return checkSum;
   }
- createBarcode(numberToEncode)
+ createBarcode(numberToEncode.trim())
 }
