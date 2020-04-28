@@ -1,3 +1,6 @@
 [alias]
+        hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+        w = log --pretty=format:\"%C(yellow)%h <%ar> %C(auto)%d %Creset %s , %C(magenta)%cn\" --graph --all -15
+        ww = log --pretty=format:\"%C(yellow)%h <%ar> %C(auto)%d %Creset %s , %C(magenta)%cn %ae\" --graph --all
 	s = status
-	w = log --pretty=format:\"%C(yellow)%h <%ar> %C(auto)%d %Creset %s , %C(magenta)%cn\" --graph --all -15
+        cm = "commit -m "
