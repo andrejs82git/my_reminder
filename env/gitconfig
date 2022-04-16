@@ -4,3 +4,5 @@
         ww = log --pretty=format:\"%C(yellow)%h <%ar> %C(auto)%d %Creset %s , %C(magenta)%cn %ae\" --graph --all
 	s = status
         cm = commit -m 
+[core]
+        quotepath = false
